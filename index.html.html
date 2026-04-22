@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ADY's Messenger</title>
+
+    <!-- ===== CSS PART ===== -->
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            width: 350px;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        li {
+            background: #f1f1f1;
+            margin: 8px 0;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        /* Custom emoji bullet */
+        li::before {
+            content: "💬 ";
+        }
+
+        .input-area {
+            display: flex;
+            margin-top: 10px;
+        }
+
+        input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+
+        button {
+            margin-left: 5px;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            background: #667eea;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #5a67d8;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>ADY's Messenger 💬</h2>
+
+<p style="text-align:center;">Welcome to Adityaraj's personal chat</p>
+
+        <!-- Message Area -->
+        <ul id="messageList"></ul>
+
+        <!-- Input Section -->
+        <div class="input-area">
+            <input type="text" id="messageInput" placeholder="Type a message...">
+            <button onclick="sendMessage()">📩</button>
+        </div>
+    </div>
+
+    <!-- ===== JAVASCRIPT PART ===== -->
+    <script>
+
+        function sendMessage() {
+            let input = document.getElementById("messageInput");
+            let message = input.value.trim();
+
+            if (message === "") return;
+
+            let li = document.createElement("li");
+            li.textContent = message;
+
+            document.getElementById("messageList").appendChild(li);
+
+            input.value = ""; // clear input
+        }
+
+        
+        document.getElementById("messageInput").addEventListener("keypress", function(e) {
+            if (e.key === "Enter") {
+                sendMessage();
+            }
+        });
+
+    </script>
+
+</body>
+</html>
